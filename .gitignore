@@ -1,2 +1,3 @@
 venv/*
 pip-selfcheck.json
+.Python
