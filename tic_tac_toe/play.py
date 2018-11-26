@@ -55,10 +55,10 @@ def play_random_game():
 		current_player = other_player
 
 	if won_game(board.player_states[0]):
-		print('player 0 wins')
+		# print('player 0 wins')
 		record_results(all_player_states, 0)
 	elif won_game(board.player_states[1]):
-		print('player 1 wins')
+		# print('player 1 wins')
 		record_results(all_player_states, 1)
 	else:
 		print('nobody wins?')
@@ -73,7 +73,7 @@ def record_results(all_player_states, winner):
 	for state in all_player_states[loser]:
 		loser_states.append(state)
 
-for i in range(200):
+for i in range(1000):
 	play_random_game()
 
 

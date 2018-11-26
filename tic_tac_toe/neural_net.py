@@ -37,9 +37,12 @@ def train_and_test(winner_states, loser_states):
 	y_test = np.array([ 1 ] * winner_test_set_size + [ 0 ] * loser_test_set_size)
 
 	model = tf.keras.models.Sequential([
-	  tf.keras.layers.Dense(512, activation=tf.nn.relu),
-	  tf.keras.layers.Dropout(0.2),
-	  tf.keras.layers.Dense(10, activation=tf.nn.softmax)
+	  # tf.keras.layers.Dense(128, activation=tf.nn.relu),
+	  # tf.keras.layers.Dense(512, activation=tf.nn.relu),
+	  tf.keras.layers.Dense(32, activation=tf.nn.relu),
+	  # tf.keras.layers.Dense(64, activation=tf.nn.relu),
+	  # tf.keras.layers.Dropout(0.2),
+	  tf.keras.layers.Dense(2, activation=tf.nn.softmax)
 	])
 	model.compile(optimizer='adam',
 	              loss='sparse_categorical_crossentropy',
@@ -48,5 +51,6 @@ def train_and_test(winner_states, loser_states):
 	print('fitting the model')
 	model.fit(x_train, y_train, epochs=5)
 	print('fit the model')
-	evaled = model.evaluate(x_test, y_test)
-	print(evaled)
+	test_loss, test_acc = model.evaluate(x_test, y_test)
+	print('test_loss:', test_loss)
+	print('test_acc:', test_acc)
