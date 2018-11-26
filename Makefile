@@ -17,5 +17,5 @@ net:
 	./venv/bin/python3 tic_tac_toe/neural_net.py
 
 py:
-	./bin/python3
+	./venv/bin/python3
 
