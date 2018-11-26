@@ -29,6 +29,7 @@ def train_and_test(winner_states, loser_states):
 		explode_player_states(loser) for loser in loser_states[:loser_training_set_size]
 	])
 	y_train = np.array([ 1 ] * winner_training_set_size + [ 0 ] * loser_training_set_size)
+
 	x_test = np.array([
 		explode_player_states(winner) for winner in winner_states[winner_training_set_size:]
 	] + [
@@ -37,12 +38,10 @@ def train_and_test(winner_states, loser_states):
 	y_test = np.array([ 1 ] * winner_test_set_size + [ 0 ] * loser_test_set_size)
 
 	model = tf.keras.models.Sequential([
-	  # tf.keras.layers.Dense(128, activation=tf.nn.relu),
-	  # tf.keras.layers.Dense(512, activation=tf.nn.relu),
-	  tf.keras.layers.Dense(32, activation=tf.nn.relu),
-	  # tf.keras.layers.Dense(64, activation=tf.nn.relu),
-	  # tf.keras.layers.Dropout(0.2),
-	  tf.keras.layers.Dense(2, activation=tf.nn.softmax)
+	  tf.keras.layers.Dense(16, activation=tf.nn.relu),
+	  tf.keras.layers.Dense(16, activation=tf.nn.relu),
+	  tf.keras.layers.Dropout(0.2),
+	  tf.keras.layers.Dense(2, activation=tf.nn.relu)
 	])
 	model.compile(optimizer='adam',
 	              loss='sparse_categorical_crossentropy',
